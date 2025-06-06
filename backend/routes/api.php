@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+    // admin routes
+});
+
+Route::middleware(['auth:sanctum', 'role:organizer'])->group(function () {
+    // organizer routes
+});
+
+Route::middleware(['auth:sanctum', 'role:attendee'])->group(function () {
+    // attendee routes
+});
