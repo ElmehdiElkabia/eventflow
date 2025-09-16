@@ -8,6 +8,8 @@ services:
     container_name: laravel-backend
     volumes:
       - ./backend:/var/www/html
+      - /var/www/html/storage
+      - /var/www/html/bootstrap/cache
     ports:
       - "9000:9000" # Expose PHP-FPM port for Nginx
     environment:
@@ -21,6 +23,7 @@ services:
       - mysql
     networks:
       - app-network
+    user: "33:33" 
 
   # React Frontend Service
   frontend:
